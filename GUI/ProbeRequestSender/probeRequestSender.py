@@ -12,7 +12,7 @@ class MainWindowUI(QMainWindow, mainWindow.Ui_MainWindow):
         self.setupUi(self)
         self.buttonClicked.connect(self.on_mybutton_clicked)
         self.pushButton_Choice.clicked.connect(self.on_pushButton_Choice_clicked)
-        self.packetBuilder = PacketBuilder()
+        self.packetBuilder = PacketBuilder(intf='wlan0')
 
     def on_pushButton_Choice_clicked(self):
         id = self.requestId.value()

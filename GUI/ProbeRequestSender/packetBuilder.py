@@ -9,13 +9,13 @@
 #   WARNING: No route found for IPv6 destination :: (no default route?)
 import logging
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
-from scapy.all import Dot11Beacon, Dot11Elt, RadioTap, Dot11, sendp, Dot11ProbeReq, Scapy80211, conf
+from scapy.all import Dot11Beacon, Dot11Elt, RadioTap, Dot11, sendp, Dot11ProbeReq, conf
 
 
 class PacketBuilder():
 
     def  __init__(self,\
-                  intf='wlan0',\
+                  intf='wlan0mon',\
                   ssid='test',\
                   source='00:00:de:ad:be:ef',\
                   bssid='00:11:22:33:44:55'):
@@ -26,10 +26,10 @@ class PacketBuilder():
       self.source = source
       self.bssid = bssid
       self.intf = intf
-      self.intfmon = intf + 'mon'
+      self.intf = intf
 
       # set Scapy conf.iface
-      conf.iface = self.intfmon
+      conf.iface = self.intf
 
 
     def Beacon(self, count=10, ssid=None, dst='ff:ff:ff:ff:ff:ff'):
